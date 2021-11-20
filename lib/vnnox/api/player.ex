@@ -1,4 +1,6 @@
 defmodule VNNOX.Api.Player do
+  @moduledoc false
+
   use VNNOX.Api, for: :token
 
   def list(start \\ 0, count \\ 20) do

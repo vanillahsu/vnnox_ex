@@ -1,4 +1,6 @@
 defmodule VNNOX.Api.Token do
+  @moduledoc false
+
   use VNNOX.Api
 
   def token(username, password, path) do

@@ -1,4 +1,6 @@
 defmodule VNNOX.Api.PlayLog do
+  @moduledoc false
+
   use VNNOX.Api, for: :token
 
   def get_playlogs_item(id, start_date, end_date, start \\ 0, count \\ 20) do

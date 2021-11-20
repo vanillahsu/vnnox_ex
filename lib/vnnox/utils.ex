@@ -1,4 +1,7 @@
 defmodule VNNOX.Utils do
+  @moduledoc false
+
+  alias VNNOX.Api.Token
   alias VNNOX.TokenState
 
   def base_url do
@@ -66,7 +69,7 @@ defmodule VNNOX.Utils do
     password = get_config(:password)
 
     {:ok, %{"data" => %{"token" => token, "expire" => expire}}} =
-      VNNOX.Api.Token.token(username, password, "oauth/token")
+      Token.token(username, password, "oauth/token")
 
     TokenState.put(:token, token)
     TokenState.put(:exp, expire)

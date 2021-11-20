@@ -1,4 +1,6 @@
 defmodule VNNOX.Parser do
+  @moduledoc false
+
   def parse(response) do
     case response do
       {:ok, %HTTPoison.Response{body: body, headers: _, status_code: status}}
