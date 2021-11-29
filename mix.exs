@@ -10,7 +10,13 @@ defmodule VNNOX.MixProject do
       start_permanent: Mix.env() == :prod,
       deps: deps(),
       description: "An Elixir client library for vnnox",
-      source_url: "https://github.com/vanillahsu/vnnox_ex"
+      source_url: "https://github.com/vanillahsu/vnnox_ex",
+      preferred_cli_env: [
+        vcr: :test,
+        "vcr.delete": :test,
+        "vcr.check": :test,
+        "vcr.show": :test
+      ]
     ]
   end
 
@@ -27,8 +33,8 @@ defmodule VNNOX.MixProject do
     [
       {:httpoison, "~> 1.8"},
       {:jason, "~> 1.2"},
-      {:credo, "~> 1.5", only: [:dev], runtime: false}
-      # {:dep_from_git, git: "https://github.com/elixir-lang/my_dep.git", tag: "0.1.0"}
+      {:credo, "~> 1.5", only: [:dev], runtime: false},
+      {:exvcr, "~> 0.13.2", only: :test, runtime: false}
     ]
   end
 end

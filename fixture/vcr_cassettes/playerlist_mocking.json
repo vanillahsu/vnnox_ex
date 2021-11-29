@@ -1,0 +1,48 @@
+[
+  {
+    "request": {
+      "url": "https://openapi-in.vnnox.com/v1/player/getPlayerList?count=20&start=0"
+    },
+    "response": {
+      "status_code": 200,
+      "headers": {
+        "Content-Type": "application/json"
+      },
+      "body": "
+{
+    \"logid\": 1588052861326,
+    \"status\": 0,
+    \"data\": {
+        \"pageInfo\": {
+            \"start\": 0,
+            \"count\": 2
+        },
+        \"total\": 7,
+        \"rows\": [
+            {
+                \"playerId\": \"7fd6783109670b52103c5bab659701d5\",
+                \"playerType\": 2,
+                \"name\": \"Taurus-50000983-2\",
+                \"sn\": \"BZSA07313J0350000983\",
+                \"version\": \"V2.2.0.0101\",
+                \"ip\": \"10.10.11.104\",
+                \"lastOnlineTime\": \"2020-09-09 15:25:32\",
+                \"onlineStatus\": 1
+            },
+            {
+                \"playerId\": \"1b6744469c9aa912704ea0f6199dc060\",
+                \"playerType\": 2,
+                \"name\": \"Taurus-50000983\",
+                \"sn\": null,
+                \"version\": null,
+                \"ip\": \"10.10.11.104\",
+                \"lastOnlineTime\": \"2020-09-05 15:25:32\",
+                \"onlineStatus\": 0
+            }
+        ]
+    }
+}
+      "
+    }
+  }
+]

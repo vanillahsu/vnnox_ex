@@ -44,12 +44,13 @@ defmodule VNNOX.Utils do
 
   def http_opts, do: get_config(:http_opts) || []
   def ua, do: get_config(:user_agent) || "VNNOX_ex <https://github.com/vanillahsu/vnnox_ex>"
+  def username, do: get_config(:username) || "test"
 
   def req_header(:token),
     do: [
       {"User-Agent", ua()},
       {"Content-Type", "application/json"},
-      {"username", get_config(:username)},
+      {"username", username()},
       {"token", get_token()}
     ]
 
