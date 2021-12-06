@@ -3,12 +3,12 @@ defmodule VNNOX.Api.Token do
 
   use VNNOX.Api
 
-  def token(username, password, path) do
+  def token(username, password) do
     payload = %{
       username: username,
       password: password
     }
 
-    do_post(path, payload)
+    do_post("v1/oauth/token", payload)
   end
 end

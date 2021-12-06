@@ -1,7 +1,7 @@
 defmodule VNNOX.Utils do
   @moduledoc false
 
-  alias VNNOX.Api.Token
+  alias VNNOX.Parser
   alias VNNOX.TokenState
 
   def base_url do
@@ -14,7 +14,7 @@ defmodule VNNOX.Utils do
         "#{vnnox_domain}.vnnox.com"
       end
 
-    "https://#{base_domain}/v1/"
+    "https://#{base_domain}/"
   end
 
   def base_url(_), do: base_url()
@@ -68,9 +68,17 @@ defmodule VNNOX.Utils do
   defp fetch_token do
     username = get_config(:username)
     password = get_config(:password)
+    bridge_url = get_config(:bridge_url)
 
-    {:ok, %{"data" => %{"token" => token, "expire" => expire}}} =
-      Token.token(username, password, "oauth/token")
+    payload = %{
+      username: username,
+      password: password
+    }
+
+    {:ok, %{"response" => %{"data" => %{"token" => token, "expire" => expire}}}} =
+      :post
+      |> HTTPoison.request(bridge_url, Jason.encode!(payload), req_header(), http_opts())
+      |> Parser.parse()
 
     TokenState.put(:token, token)
     TokenState.put(:exp, expire)

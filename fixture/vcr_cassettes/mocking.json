@@ -1,6 +1,44 @@
 [
   {
     "request": {
+      "url": "https://vnox.indoteam.id/api/getTokenVnnox"
+    },
+    "response": {
+      "status_code": 200,
+      "headers": {
+        "Content-Type": "application/json"
+      },
+      "body": "{\"response\": {
+	           \"logid\":1588052764865,
+	           \"status\":0,
+		   \"data\":{
+                      \"token\":\"1d7623462bb705c02955d79b1c3aa6e7\",
+                      \"expire\":86000
+                   }
+	       }
+               }"
+    }
+  },
+  {
+    "request": {
+      "url": "https://openapi-in.vnnox.com/v1/oauth/token?"
+    },
+    "response": {
+      "status_code": 200,
+      "headers": {
+        "Content-Type": "application/json"
+      },
+      "body": "{\"logid\":1588052764865,
+	        \"status\":0,
+		\"data\":{
+                   \"token\":\"1d7623462bb705c02955d79b1c3aa6e7\",
+                   \"expire\":86000
+                }
+               }"
+    }
+  },
+  {
+    "request": {
       "url": "https://openapi-in.vnnox.com/v1/player/getPlayerList?count=20&start=0"
     },
     "response": {

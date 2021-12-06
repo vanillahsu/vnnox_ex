@@ -54,7 +54,7 @@ defmodule VNNOX.Api do
         uri = build_url(path, params)
 
         method
-        |> HTTPoison.request(uri, req_body, req_header(unquote(opts)[:token]), http_opts())
+        |> HTTPoison.request(uri, req_body, req_header(unquote(opts)[:for]), http_opts())
         |> Parser.parse()
       end
 

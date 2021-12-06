@@ -9,16 +9,15 @@ defmodule VNNOXTest do
   end
 
   test "get token" do
-    use_cassette "token_mocking" do
-      {:ok, %{"data" => %{"token" => token}}} =
-        VNNOX.Api.Token.token("test", "test", "oauth/token")
+    use_cassette "mocking" do
+      {:ok, %{"data" => %{"token" => token}}} = VNNOX.Api.Token.token("test", "test")
 
       assert token == "1d7623462bb705c02955d79b1c3aa6e7"
     end
   end
 
   test "get player list" do
-    use_cassette "playerlist_mocking" do
+    use_cassette "mocking" do
       {:ok, %{"data" => data}} = VNNOX.Api.Player.list()
 
       assert data["total"] == 7
