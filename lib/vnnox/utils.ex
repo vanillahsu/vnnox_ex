@@ -45,12 +45,13 @@ defmodule VNNOX.Utils do
   def http_opts, do: get_config(:http_opts) || []
   def ua, do: get_config(:user_agent) || "VNNOX_ex <https://github.com/vanillahsu/vnnox_ex>"
   def username, do: get_config(:username) || "test"
+  def real_username, do: get_config(:real_username) || "test"
 
   def req_header(:token),
     do: [
       {"User-Agent", ua()},
       {"Content-Type", "application/json"},
-      {"username", username()},
+      {"username", real_username()},
       {"token", get_token()}
     ]
 
@@ -60,7 +61,7 @@ defmodule VNNOX.Utils do
     do: [
       {"User-Agent", ua()},
       {"Content-Type", "application/json"},
-      {"username", get_config(:username)}
+      {"username", username()}
     ]
 
   defp get_config(key), do: Application.get_env(:vnnox_ex, key)
