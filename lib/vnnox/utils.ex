@@ -81,8 +81,9 @@ defmodule VNNOX.Utils do
       |> HTTPoison.request(bridge_url, Jason.encode!(payload), req_header(), http_opts())
       |> Parser.parse()
 
+    expire_ts = DateTime.utc_now() |> DateTime.to_unix() |> Kernel.+(expire)
     TokenState.put(:token, token)
-    TokenState.put(:exp, expire)
+    TokenState.put(:exp, expire_ts)
     token
   end
 
