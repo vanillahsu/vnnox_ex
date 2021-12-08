@@ -3,17 +3,16 @@ defmodule VNNOX.Parser do
 
   def parse(response) do
     case response do
-      {:ok, %HTTPoison.Response{body: body, headers: _, status_code: status}}
-      when status in [200, 201] ->
+      {:ok, %Tesla.Env{body: body, headers: _, status: status}} when status in [200, 201] ->
         {:ok, Jason.decode!(body)}
 
-      {:ok, %HTTPoison.Response{body: _, headers: _, status_code: 204}} ->
+      {:ok, %Tesla.Env{body: _, headers: _, status: 204}} ->
         :ok
 
-      {:ok, %HTTPoison.Response{body: body, headers: _, status_code: status}} ->
+      {:ok, %Tesla.Env{body: body, headers: _, status: status}} ->
         {:error, body, status}
 
-      {:error, %HTTPoison.Error{id: _, reason: reason}} ->
+      {:error, %Tesla.Error{reason: reason}} ->
         {:error, %{reason: reason}}
 
       _ ->

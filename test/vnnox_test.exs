@@ -4,7 +4,6 @@ defmodule VNNOXTest do
 
   setup do
     ExVCR.Config.cassette_library_dir("fixture/vcr_cassettes")
-    HTTPoison.start()
     :ok
   end
 

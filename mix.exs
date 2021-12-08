@@ -23,7 +23,7 @@ defmodule VNNOX.MixProject do
   # Run "mix help compile.app" to learn about applications.
   def application do
     [
-      extra_applications: [:logger, :httpoison, :jason],
+      extra_applications: [:logger, :tesla, :jason],
       mod: {VNNOX.Application, []}
     ]
   end
@@ -31,8 +31,8 @@ defmodule VNNOX.MixProject do
   # Run "mix help deps" to learn about dependencies.
   defp deps do
     [
-      {:httpoison, "~> 1.8"},
-      {:httpoison_retry, "~> 1.1"},
+      {:tesla, "~> 1.4"},
+      {:hackney, "~> 1.18", optional: true},
       {:jason, "~> 1.2"},
       {:credo, "~> 1.5", only: [:dev], runtime: false},
       {:exvcr, "~> 0.13.2", only: :test, runtime: false}

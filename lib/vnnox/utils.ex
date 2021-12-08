@@ -1,6 +1,7 @@
 defmodule VNNOX.Utils do
   @moduledoc false
 
+  alias VNNOX.Client
   alias VNNOX.Parser
   alias VNNOX.TokenState
 
@@ -77,8 +78,13 @@ defmodule VNNOX.Utils do
     }
 
     {:ok, %{"response" => %{"data" => %{"token" => token, "expire" => expire}}}} =
-      :post
-      |> HTTPoison.request(bridge_url, Jason.encode!(payload), req_header(), http_opts())
+      Client.request(
+        method: :post,
+        url: bridge_url,
+        body: Jason.encode!(payload),
+        headers: req_header(),
+        opts: http_opts()
+      )
       |> Parser.parse()
 
     expire_ts = DateTime.utc_now() |> DateTime.to_unix() |> Kernel.+(expire)
