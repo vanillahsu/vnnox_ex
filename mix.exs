@@ -32,6 +32,7 @@ defmodule VNNOX.MixProject do
   defp deps do
     [
       {:httpoison, "~> 1.8"},
+      {:httpoison_retry, "~> 1.1"},
       {:jason, "~> 1.2"},
       {:credo, "~> 1.5", only: [:dev], runtime: false},
       {:exvcr, "~> 0.13.2", only: :test, runtime: false}

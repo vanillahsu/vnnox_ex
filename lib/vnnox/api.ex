@@ -1,6 +1,8 @@
 defmodule VNNOX.Api do
   @moduledoc false
 
+  import HTTPoison.Retry
+
   defmacro __using__(opts) do
     quote do
       alias VNNOX.Parser
@@ -55,6 +57,7 @@ defmodule VNNOX.Api do
 
         method
         |> HTTPoison.request(uri, req_body, req_header(unquote(opts)[:for]), http_opts())
+        |> autoretry(max_attempts: 3, wait: 1_500)
         |> Parser.parse()
       end
 
