@@ -23,7 +23,7 @@ defmodule VNNOX.MixProject do
   # Run "mix help compile.app" to learn about applications.
   def application do
     [
-      extra_applications: [:logger, :tesla, :jason],
+      extra_applications: [:logger, :hackney, :tesla, :jason],
       mod: {VNNOX.Application, []}
     ]
   end

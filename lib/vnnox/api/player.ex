@@ -51,4 +51,12 @@ defmodule VNNOX.Api.Player do
   def video_source(source, ids \\ []) when source in [0, 1] and is_list(ids) do
     do_post("v1/player/immediateControl/videoSource", %{playerIds: ids, source: source})
   end
+
+  def async_current_status(callback_url, commands \\ [], ids \\ []) do
+    do_post("v1/player/asyncCurrentStatus", %{
+      playerIds: ids,
+      commands: commands,
+      noticeUrl: callback_url
+    })
+  end
 end
