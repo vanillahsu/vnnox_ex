@@ -53,7 +53,7 @@ defmodule VNNOX.Api.Player do
   end
 
   def async_current_status(callback_url, commands \\ [], ids \\ []) do
-    do_post("v1/player/asyncCurrentStatus", %{
+    do_post("v1/player/asynCurrentStatus", %{
       playerIds: ids,
       commands: commands,
       noticeUrl: callback_url
